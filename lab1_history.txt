@@ -1,0 +1,128 @@
+    1  echo -n "Hello world!"
+    2  grep -iw --color -m1 bash /etc/passwd
+    3  echo "it's hard to do that"
+    4  echo 'it'\''s hard to do that'
+    5  echo '"Пример текста в кавычках"'
+    6  echo '# эта строка не является комментарием'
+    7  whoami
+    8  whoaim
+    9  whoami
+   10  echo "Hello World"
+   11  date
+   12  cal
+   13  man cal
+   14  cal -3
+   15  history
+   16  clear
+   17  pwd
+   18  cd /
+   19  cd ..
+   20  pwd
+   21  ls
+   22  ls /var
+   23  cd ~
+   24  cd
+   25  cd ..
+   26  pwd
+   27  ls
+   28  ls -l
+   29  cd ~
+   30  mkdir fruits
+   31  cd /
+   32  mkdir ~/animals
+   33  touch /tmp/temp
+   34  ls
+   35  history
+   36  pwd
+   37  cd ./fruits/
+   38  touch apple banana pineapple lion
+   39  ls
+   40  touch ~/animals/cat.txt ~/animals/dog.txt ~/animals/elephant.txt
+   41  ls -l | grep apple 
+   42  ls b*
+   43  ls *a
+   44  ls [bi]*
+   45  ls b* l*
+   46  ls b* i*
+   47  cp /etc/passwd
+   48  cp /etc/passwd ~
+   49  cat /etc/issue
+   50  cp /etc/issue ~/fruits/apple 
+   51  cat apple 
+   52  mv lion ~/animals/
+   53  mv pineapple pineaple
+   54  ls
+   55  mv pineaple pineapple
+   56  man wc
+   57  wc -l /etc/passwd
+   58  cd ~
+   59  pwd
+   60  ln -s /etc/passwd passwd_link
+   61  ln .bash_history history_hard
+   62  ls -l .bash_history 
+   63  ls
+   64  ls -l history_hard 
+   65  rm fruits/apple 
+   66  mkdir rmme
+   67  ls
+   68  rmdir rmme/
+   69  rmdir fruits/
+   70  rm -rf fruits/
+   71  cat /etc/passwd /var/log/boot.log 
+   72  cp /etc/init.d/ ~
+   73  cp -r /etc/init.d/ ~
+   74  ls
+   75  rm -rf init.d/
+   76  cut -d: -f1 /etc/passwd | sort
+   77  man cut
+   78  man column 
+   79  man less
+   80  cut -d: -f1,3,4 /etc/passwd | column -ts: | less
+   81  cut -d: -f1,3 /etc/passwd | column -ts: | less | sort -d
+   82  grep :/bin/bash /etc/passwd | wc -l
+   83  man grep
+   84  grep :/bin/bash /etc/passwd | cut -d: f1 | sort -d
+   85  man cut
+   86  grep :/bin/bash /etc/passwd | cut -d: -f1 | sort -r
+   87  man sort 
+   88  man rpm
+   89  rpm -qa --qf '%{NAME}: %{SIZE}\n' | sort -rn -k2,2 | head -n 25
+   90  rpm -ql man-db | xargs -l du    2> /dev/null  | sort -n
+   91                  ^ для каждого   ^ игнорировать  ^ сортировать числа
+   92                   файла вызвать      ошибки
+   93  rpm -ql man-db | xargs -l du    2> /dev/null  | sort -n
+   94  man top
+   95  man sort
+   96  top -b -n1 | sort -d
+   97  top -b -n1 | tail -n+8 | cut -c7-  | tr -s ' ' '\t' | cut -f11,5
+   98  man tr
+   99  cat /etc/passwd | tr ":" " "
+  100  cut -d: -f1,7 /etc/passwd | column -ts: | less | sort -k1
+  101  yum install -y git
+  102  sudo yum install -y git,
+  103  sudo yum install -y git
+  104  cd /usr/share/doc/git-*
+  105  cat user-manual.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq -c | sort -rn | head -5
+  106  cd /usr/share/doc/git*
+  107  pwd
+  108  cat user-manual.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq -c | sort -rn | head -5
+  109  cat user-manual.txt | tr -cs '[:alpha:]' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -rn | head -5
+  110  tr '[:lower:]' '[:upper:]' < user-manual.txt |  tr -d '[:punct:] \n\t' | fold -w1 | sort | uniq -c | sort -rn | head -5
+  111  tr -cs '[:alpha:]' '\n' < user-manual.txt | less | grep -E ........ | sort | uniq -c | sort -rn | head
+  112  ping ya.ru
+  113  curl wttr.in
+  114  hostname -I
+  115  curl ifconfig.me
+  116  wget https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README-ru.md
+  117  less README-ru.md
+  118  usermod -aG wheel anchovy 
+  119  id
+  120  whoami
+  121  sudo id
+  122  sudo id #
+  123  sudo #
+  124  sudo less /var/log/messages
+  125  less /var/log/messages
+  126  su
+  127  cd ~
+  128  history > lab1_history.txt
