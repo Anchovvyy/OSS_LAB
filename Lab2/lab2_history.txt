@@ -1,0 +1,36 @@
+    1  cd ~
+    2  mkdir ./test
+    3  cd ./test/
+    4  touch file && ll file
+    5  man chmod 
+    6  chmod 000 file 
+    7  ls -l file 
+    8  echo "тест" > file 
+    9  cat  file
+   10  chmod u+w file 
+   11  ls -l file 
+   12  echo "test" > file 
+   13  cat file 
+   14  chmod g+r file 
+   15  ls -l file 
+   16  cat file 
+   17  chmod u+r file 
+   18  cat file 
+   19  mkdir ./dir
+   20  touch ./dir/new_file
+   21  echo "file2" > ./dir/new_file 
+   22  ls ./dir/
+   23  chmod u-x dir
+   24  ls -l dir/
+   25  rm ./dir/new_file 
+   26  man chown
+   27  man chgrp 
+   28  chown root file 
+   29  chgrp root file
+   30  umask 0077
+   31  touch file1 && ll file1
+   32  umask 0000
+   33  touch file2 && ll file2
+   34  cat file
+   35  cd ..
+   36  history > ~/lab2_history.txt

@@ -1,0 +1,29 @@
+
+[root@localhost anchovy]# cd ./test/
+[root@localhost test]# chown root file
+[root@localhost test]# chmod 0077 file
+[root@localhost test]# ls -l file
+----rwxrwx. 1 root anchovy 5 окт  2 19:30 file
+[root@localhost test]# chmod 0000 file
+[root@localhost test]# ls -l file
+----------. 1 root anchovy 5 окт  2 19:30 file
+[root@localhost test]# chmod 0100 file
+[root@localhost test]# ls -l file
+---x------. 1 root anchovy 5 окт  2 19:30 file
+[root@localhost test]# chmod 0000 file
+[root@localhost test]# chmod u+rwx file
+[root@localhost test]# ls -l file
+-rwx------. 1 root anchovy 5 окт  2 19:30 file
+[root@localhost test]# chmod g+rwx file
+[root@localhost test]# ls -lR
+.:
+итого 4
+drw-rwxrwx. 2 anchovy anchovy 22 окт  2 19:31 dir
+-rwxrwx---. 1 root    anchovy  5 окт  2 19:30 file
+-rw-------. 1 anchovy anchovy  0 окт  2 19:35 file1
+-rw-rw-rw-. 1 anchovy anchovy  0 окт  2 19:36 file2
+
+./dir:
+итого 4
+-rw-rw-rw-. 1 anchovy anchovy 6 окт  2 19:32 new_file
+
