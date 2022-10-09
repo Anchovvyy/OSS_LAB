@@ -27,7 +27,7 @@ find / -maxdepth 1 -name "*pass*"
 4. Найдите все файлы и каталоги, имена которых оканчиваются на `.bin`. Поиск необходимо выполнить в каталоге `/home`.
 
 ```sh
-find /home -name "*.bin"
+find /home -maxpedth 1 -name "*.bin"
 ```
 
 5. Найдите все **файлы** (и только файлы) с расширением `bak` и удалите их.
@@ -45,7 +45,7 @@ find / -type f -name "*.txt" -o -name "*.sh"
 7. Найдите все **файлы** (и только файлы) в текущем каталоге и выведите **только** имя файла (без каталога), владельца, группу владельца, количество жёстких ссылок на этот файл и его размер в байтах.
 
 ```sh
-find . -type f -printf "%f %u %g %n %s\n"
+find . -maxdepth 1 -type f -printf "%f %u %g %n %s\n"
 ```
 
 8. Найдите все пустые **каталоги** в текущем каталоге.
@@ -93,19 +93,19 @@ find / -type f -links +2
 15. Найдите все **файлы** (и только файлы) в каталоге `/usr/bin`, последний доступ к которым осуществлялся более трёх месяцев назад.
 
 ```sh
-find /usr/bin -type f -atime +2160
+find /usr/bin -type f -atime +90
 ```
 
 16. Найдите все **файлы** (и только файлы) в каталогах `/usr/bin` и `/usr/share`, созданные или изменённые в течении последних 10 дней.
 
 ```sh
-find /usr/bin /usr.share -type f -mtime -241
+find /usr/bin /usr.share -type f -mtime -10
 ```
 
 17. Найдите и удалите все **файлы** (и только файлы) в каталоге `/tmp`, которые не менялись более двух недель.
 
 ```sh
-find /tmp -type f -mtime -336 -delete
+find /tmp -type f -mtime +14 -delete
 ```
 
 18. Найдите все **файлы** (и только файлы) в каталоге `/usr/bin` с установленным флагом suid/sgid.
@@ -120,37 +120,29 @@ find /usr/bin -type f -perm /u+s,g+s
 1. Найдите все **файлы** (и только файлы) с расширением `txt` и подсчитайте количество строк во всех этих файлах.
 
 ```sh
-find / -type f -name "*.txt" -exec cat {} \; | wc -l
+find / -type f -name "*.txt" | xargs wc -l
 ```
 
 2. Найдите все каталоги с названием `.svn` и удалите их, включая содержимое этих каталогов, попутно выводя список удалённых файлов на экран.
 
 ```sh
-find / -type d -name ".svn" -exec rm -rfv {} \;
+find / -type d -name "*.svn" -exec rm {} \; -printf "%p"
 ```
 
 3. Найдите все **файлы** (и только файлы) с расширением `sh` и добавьтем им право на исполнение.
 
 ```sh
-sudo find / -type f -name "*.sh" -exec chmod +x {} \;
+sudo find / -type f -name "*.sh" | xargs chmod +x
 ```
 
 4. Найдите все **файлы** (и только файлы) с расширением `conf` в каталоге `/etc` и подсчитайте их суммарный размер, используя команду du.
 
 ```sh
-sudo find /etc -type f -name "*.conf" -exec  du -hs {} +
+sudo find /etc -type f -name "*.conf" | xargs du -c
 ```
 
 
 Протестируйте команды, которые вы написали выше, для файлов и каталогов, в именах которых содержатся пробелы и специальные символы, такие как `!` и `&`.
-
-```
-touch test\ with\!\&\ spec_characters.txt
-find . -type f -name "*.txt" -exec cat {} \; | wc -l
-find . -type f -name "*characters.txt" -exec cat {} \; | wc -l
-```
-Find works quite good with files with spec. characters!
-
 
 Используя команду `grep`:
 
@@ -169,37 +161,37 @@ sudo grep -i -c -v ERROR /var/log/messages
 3. Из файла `/var/log/messages` вывести строки, содержащие **только слово `ERROR` целиком**, с учётом регистра.
 
 ```sh
-sudo grep -w ERROR /var/log/messages
+sudo grep "\<ERROR\>" /var/log/messages
 ```
 
 4. Вывести количество строк из файла `/etc/group`, совпадающих с шаблоном `wheel`.
 
 ```sh
-grep -c wheel /etc/group
+grep -c "wheel" /etc/group
 ```
 
 5. Найти во всех файлах из текущего каталога и вложенных подкаталогов строки, содержащие шаблон `#!bin/bash`.
 
 ```sh
-grep -rF '#!bin/bash'
+grep -r "#!bin/bash"
 ```
 
 6. Изменить предыдущую команду таким образом, чтобы она выводила дополнительные 10 строк после каждого найденного шаблона.
 
 ```sh
-grep -rF -A 10 '#!bin/bash'
+grep -r -A 10 "#!bin/bash"
 ```
 
 7. Найти во всех файлах с расширением `sh` из текущего каталога и вложенных подкаталогов строки, содержащие слово `echo` **целиком**. В выводе команды `grep` найденные слова выделите цветом.
 
 ```sh
-grep -r --color -w 'echo' *.sh
+grep -rw "\<echo\>" --include "*.sh" --color=auto
 ```
 
 8. Измените предыдущую команду таким образом, чтобы команда grep отображала также имя файла и номер строки, в которой было обнаружено совпадение с шаблоном.
 
 ```sh
-grep -rnH --color -w 'echo' *.sh
+grep -nrw "\<echo\>" --include "*.sh" --color=auto
 ```
 
 
