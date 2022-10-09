@@ -75,7 +75,7 @@ find . -type f -links 1 -o -links +1
 12. Найдите файлы и каталоги в каталоге `/etc`, **не** принадлежащие пользователю `root`.
 
 ```sh
-find /etc -type f -o -type d -not -user root
+find /etc -type f -o -type d -not -user root -maxdepth 1
 ```
 
 13. Найдите все **файлы** (и только файлы), у которых **нет** расширения `sh`.
