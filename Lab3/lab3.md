@@ -105,7 +105,7 @@ find /usr/bin /usr.share -type f -mtime -10
 17. Найдите и удалите все **файлы** (и только файлы) в каталоге `/tmp`, которые не менялись более двух недель.
 
 ```sh
-find /tmp -type f -mtime +14 -delete
+find /tmp -type f -ctime +14 -delete
 ```
 
 18. Найдите все **файлы** (и только файлы) в каталоге `/usr/bin` с установленным флагом suid/sgid.
