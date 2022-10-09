@@ -111,7 +111,7 @@ find /tmp -type f -ctime +14 -delete
 18. Найдите все **файлы** (и только файлы) в каталоге `/usr/bin` с установленным флагом suid/sgid.
 
 ```sh
-find /usr/bin -type f -perm /u+s,g+s
+find /usr/bin -type f -maxdepth 1 -perm /u+s,g+s
 ```
 
 
