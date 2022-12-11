@@ -3,7 +3,7 @@
     3  cd ./test/
     4  touch file && ll file
     5  man chmod 
-    6  chmod 000 file 
+    6  chmod ugo-rwx file
     7  ls -l file 
     8  echo "тест" > file 
     9  cat  file
