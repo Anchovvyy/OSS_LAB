@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+extern char **environ;
+
+int main(int argc, char *argv[]) {
+	int i = 0;
+	char **ptr = environ;
+	while (*ptr++)
+		i++;
+	printf("Number of environment variables: %d\n", i);
+	printf("Number of command line arguments: %d\n", argc);
+	return 0;
+}
