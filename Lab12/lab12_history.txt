@@ -1,0 +1,36 @@
+    1  ldd /bin/ls | grep selinux
+    2  ls -l /etc/selinux/
+    3  ls -l /etc/selinux/targeted/
+    4  ls -Z /etc/passwd /etc/group /etc/shadow
+    5  ls -Z /etc/login.defs /etc/sudoers
+    6  ls -Z /usr/bin/passwd 
+    7  ls -Z /usr/sbin/useradd 
+    8  getfattr -n security.selinux /etc/passwd
+    9  ps Zaux
+   10      $ ls /proc/$$/attr
+   11  ls /proc/$$/attr
+   12  ps Z $(pgrep passwd)
+   13  netstat -tnlpZ
+   14  sestatus
+   15  getenforce
+   16  cat /sys/fs/selinux/enforce
+   17  getsebool -a | grep httpd
+   18  seinfo
+   19  seinfo -cfile -x
+   20  seinfo --class | grep file
+   21  seinfo --class file -x
+   22  seinfo --common file -x
+   23  seinfo | grep 'Policy Version'
+   24  seinfo -c file -x
+   25  seinfo -c dir -x
+   26  seinfo --common file -x
+   27  grep 'httpd_.*_t' /etc/selinux/targeted/contexts/files/file_contexts
+   28  semanage fcontext -l
+   29  sesearch -T -s httpd_t -t var_log_t
+   30  sesearch -T -s httpd_t -t tmp_t
+   31  sesearch --allow --source passwd_t --target shadow_t --class file
+   32  sesearch -A -s passwd_t -t passwd_exec_t -c file
+   33  sesearch -A -s unconfined_t -t passwd_exec_t -c file
+   34  sesearch -A -s unconfined_t -t passwd_t -c process
+   35  sesearch --type_trans -s unconfined_t -t passwd_exec_t
+   36  history > lab12_history.txt
