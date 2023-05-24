@@ -1,0 +1,6 @@
+  240  id
+  241  clear
+  242  echo 'Hello, world!' > file1
+  243  cat file1 
+  244  chmod 600 file1
+  245  history > lab11.txt

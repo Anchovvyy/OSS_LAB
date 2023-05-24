@@ -1,0 +1,16 @@
+   49  auditctl -D
+   50  auditctl -w /home/user1/file1 -p war -k user1_file1
+   51  auditctl -w /home/Anchovy/file1 -p war -k Anchovy_file1
+   52  auditctl -l
+   53  ureport --file -ts today -i --summary
+   54  aureport --file -ts today -i --summary
+   55  aureport --file -ts recent 
+   56  ausearch -a 13053
+   57  ausearch -a 312
+   58  aureport
+   59  aureport --auth -ts recent
+   60  aureport --user -ts recent -i
+   61* 
+   62  ausearch --uid 1000 -ts recent
+   63  history lab11sudo.txt
+   64  history > lab11root.txt
